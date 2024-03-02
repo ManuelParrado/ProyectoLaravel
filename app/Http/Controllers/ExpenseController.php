@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $allCategories = Category::all();
+        return view('project.create')->with('allCategories', $allCategories);
     }
 
     /**
