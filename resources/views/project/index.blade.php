@@ -8,7 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <a href="{{ route('expense.create') }}" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Create a New Expense</a>
-
+            @if (session('status'))
+                <div class="p-4 mb-4 text-sm text-{{session('color')}}-800 rounded-lg bg-{{session('color')}}-50 dark:bg-gray-800 dark:text-{{session('color')}}-400" role="alert">
+                    <span class="font-medium">INFO</span> {{session('status')}}
+                </div>
+            @endif
             <div class="bg-white dark:bg-gray-800 mt-4 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -33,7 +37,7 @@
                                     Categories
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Edit
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
@@ -53,7 +57,7 @@
                                         {{$ue->payment_method}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$ue->image}}
+                                        <a href="{{route('expense.show', ['expense'=>$ue])}}">See invoice</a>
                                     </td>
                                     <td class="px-6 py-4">
                                         <ul>
@@ -62,9 +66,14 @@
                                             @endforeach
                                         </ul>
                                     </td>
-                                    <td class="px-6 py-4 flex justify-center">
-                                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Edit Expense</button>
-                                        <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Delete Expense</button>
+                                    <td class="px-6 py-4">
+                                        <a href="{{route('expense.edit', ['expense'=>$ue])}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Edit Expense</a>
+                                        <form class="mt-5" action="{{route('expense.destroy', ['expense'=>$ue])}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Delete Expense</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             @endforeach

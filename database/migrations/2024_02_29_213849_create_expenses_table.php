@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->decimal('amount', 10, 2);
-            $table->date('expense_date');
-            $table->string('payment_method')->nullable();
-            $table->string('image')->nullable();
+            $table->date('expense_date')->default(now());
+            $table->string('payment_method');
+            $table->string('image');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
