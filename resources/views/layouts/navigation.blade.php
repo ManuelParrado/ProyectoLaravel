@@ -21,11 +21,13 @@
                         {{ __('Start') }}
                     </x-nav-link>
                 </div>
+                @if (Auth::check() && Auth::user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                         {{ __('Administration') }}
                     </x-nav-link>
                 </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -91,9 +93,11 @@
             <x-responsive-nav-link :href="route('expense.index')" :active="request()->routeIs('expense.index')">
                 {{ __('Start') }}
             </x-responsive-nav-link>
+            @if (Auth::check() && Auth::user()->role === 'admin')
             <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                 {{ __('Admnistration') }}
             </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
