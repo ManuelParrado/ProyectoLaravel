@@ -56,14 +56,9 @@ class UserController extends Controller
 
             $newUser->save();
 
-            return to_route('user.index')->with('status', 'Usuario creado correctamente');
+            return to_route('user.index')->with('status', 'User created successfully')->with('color', 'green');
         } catch (QueryException $e) {
-            //Si se hace mal manda un mensaje de error a la vista
-            Log::error('Error al guardar el gasto: ' . $e->getMessage());
-            // También puedes imprimir el mensaje de error
-            echo 'Error en la base de datos: ' . $e->getMessage();
-            // Redirecciona a la página anterior con un mensaje de error
-            return back()->with('error', 'Error en la base de datos: ' . $e->getMessage());
+            return to_route('user.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
     }
 
@@ -98,22 +93,23 @@ class UserController extends Controller
 
             $user->save();
 
-            return to_route('user.index')->with('status', 'Usuario editado correctamente');
+            return to_route('user.index')->with('status', 'User edited successfully')->with('color', 'green');
         } catch (QueryException $e) {
-            //Si se hace mal manda un mensaje de error a la vista
-            Log::error('Error al guardar el gasto: ' . $e->getMessage());
-            // También puedes imprimir el mensaje de error
-            echo 'Error en la base de datos: ' . $e->getMessage();
-            // Redirecciona a la página anterior con un mensaje de error
-            return back()->with('error', 'Error en la base de datos: ' . $e->getMessage());
+            return to_route('user.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        try {
+
+            $user->delete();
+            return to_route('user.index')->with('status', 'User deleted successfully')->with('color', 'green');
+        } catch (QueryException $e) {
+            return to_route('user.index')->with('status', 'An error has occurred')->with('color', 'red');
+        }
     }
 }

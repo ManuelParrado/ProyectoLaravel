@@ -10,7 +10,7 @@
             <a href="{{ route('user.create') }}" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Create a New User</a>
             @if (session('status'))
                 <div class="p-4 mb-4 text-sm text-{{session('color')}}-800 rounded-lg bg-{{session('color')}}-50 dark:bg-gray-800 dark:text-{{session('color')}}-400" role="alert">
-                    <span class="font-medium">INFO</span> {{session('status')}}
+                    {{session('status')}}
                 </div>
             @endif
             <div class="bg-white dark:bg-gray-800 mt-4 overflow-hidden shadow-sm sm:rounded-lg">
@@ -19,15 +19,12 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    ID
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Last Name
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     Email
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -47,10 +44,7 @@
                         <tbody>
                             @foreach ($users as $u)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{$u->id}}
-                                    </th>
-                                    <td class="px-6 py-4">
+                                    <td scope="row" class="px-6 py-4">
                                         {{$u->name}}
                                     </td>
                                     <td class="px-6 py-4">

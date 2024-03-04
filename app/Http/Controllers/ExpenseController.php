@@ -55,14 +55,9 @@ class ExpenseController extends Controller
             $newExpense->categories()->sync($request->input('selected_categories'));
             $request->file('image')->storeAs('public/images', $imageName);
 
-            return to_route('expense.index')->with('status', 'Coche insertado correctamente');
+            return to_route('expense.index')->with('status', 'Expense edited successfully')->with('color', 'green');
         } catch (QueryException $e) {
-            //Si se hace mal manda un mensaje de error a la vista
-            Log::error('Error al guardar el gasto: ' . $e->getMessage());
-            // También puedes imprimir el mensaje de error
-            echo 'Error en la base de datos: ' . $e->getMessage();
-            // Redirecciona a la página anterior con un mensaje de error
-            return back()->with('error', 'Error en la base de datos: ' . $e->getMessage());
+            return to_route('expense.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
     }
 
@@ -111,14 +106,9 @@ class ExpenseController extends Controller
 
             $expense->categories()->sync($request->input('selected_categories'));
 
-            return to_route('expense.index')->with('status', 'Coche editado correctamente');
+            return to_route('expense.index')->with('status', 'Expense edited successfully')->with('color', 'green');
         } catch (QueryException $e) {
-            //Si se hace mal manda un mensaje de error a la vista
-            Log::error('Error al guardar el gasto: ' . $e->getMessage());
-            // También puedes imprimir el mensaje de error
-            echo 'Error en la base de datos: ' . $e->getMessage();
-            // Redirecciona a la página anterior con un mensaje de error
-            return back()->with('error', 'Error en la base de datos: ' . $e->getMessage());
+            return to_route('expense.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
     }
 
@@ -129,12 +119,9 @@ class ExpenseController extends Controller
     {
         try {
             $expense->delete();
-            // Devolvemos un mensaje correcto en caso de que haya ido todo bien
-            return to_route('expense.index')->with('status', 'Gasto borrado correctamente')->with('color', 'green');
+            return to_route('expense.index')->with('status', 'Expense deleted successfully')->with('color', 'green');
         } catch (QueryException $e) {
-
-            // Devolvemos un mensaje de error en caso de que algo haya ido mal
-            return to_route('expense.index')->with('status', 'No se ha podido borrar el gasto')->with('color', 'red');
+            return to_route('expense.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
     }
 }
