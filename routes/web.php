@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APICategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
