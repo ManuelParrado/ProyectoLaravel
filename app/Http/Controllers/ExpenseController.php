@@ -55,7 +55,7 @@ class ExpenseController extends Controller
             $newExpense->categories()->sync($request->input('selected_categories'));
             $request->file('image')->storeAs('public/images', $imageName);
 
-            return to_route('expense.index')->with('status', 'Expense edited successfully')->with('color', 'green');
+            return to_route('expense.index')->with('status', 'Expense created successfully')->with('color', 'green');
         } catch (QueryException $e) {
             return to_route('expense.index')->with('status', 'An error has occurred')->with('color', 'red');
         }
