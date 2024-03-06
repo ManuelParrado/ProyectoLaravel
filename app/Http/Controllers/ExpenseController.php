@@ -19,9 +19,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::id());
-        $userExpenses = $user->expenses()->with('categories')->get();
-        return view('project.index')->with('userExpenses', $userExpenses);
+        return view('project.index');
     }
 
     /**

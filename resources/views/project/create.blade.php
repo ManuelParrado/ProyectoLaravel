@@ -49,9 +49,9 @@
                 </div>
 
                 <div>
-                    <x-input-label for="image" :value="__('Upload invoice image')" />
-                    <input  id="image" type="file" name="image" accept=".jpeg, .jpg, .png" value="{{old('image')}}" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, PNG or JPG (MAX. 2MB).</p>
+                    <x-input-label for="image" :value="__('Upload invoice PDF')" />
+                    <input  id="image" type="file" name="image" accept=".pdf" value="{{old('image')}}" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PDF ONLY</p>
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
 
