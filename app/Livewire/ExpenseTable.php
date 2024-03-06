@@ -29,6 +29,9 @@ class ExpenseTable extends Component
         $userExpenses = $user->expenses()
             ->with('categories')
             ->where('description', 'like', '%' . $this->search . '%')
+            ->orWhere('amount', 'like', '%' . $this->search . '%')
+            ->orWhere('expense_date', 'like', '%' . $this->search . '%')
+            ->orWhere('payment_method', 'like', '%' . $this->search . '%')
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate(5);
 
