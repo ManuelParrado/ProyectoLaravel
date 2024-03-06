@@ -1,6 +1,13 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Recover password') }}
+        </h2>
+    </x-slot>
+
+    <div class="mb-4 text-sm text-gray-400 dark:text-gray-300">
+        {{ __('Forgot your password? No worries. Simply provide us with your email address, and we`ll send you a password reset link. This link will enable you to select a new password.') }}
     </div>
 
     <!-- Session Status -->
