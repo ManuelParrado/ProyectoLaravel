@@ -19,7 +19,6 @@ class ExpenseTable extends Component
     public $sortField = 'id';
     public $sortAsc = true;
 
-
     #[On('updatelist')]
     public function render()
     {

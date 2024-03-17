@@ -15,7 +15,7 @@
                     <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Your Expense App</h1>
                     <p class="text-lg text-gray-600">Start managing your expenses effortlessly with our powerful expense tracking application.</p>
                     @guest
-                    <a href="{{ route('expense.index') }}" class="mt-4 inline-block bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Get Started</a>
+                    <a href="{{ route('expense.index') }}" class="mt-4 inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800">Get Started</a>
                     @endguest
                 </div>
             </div>

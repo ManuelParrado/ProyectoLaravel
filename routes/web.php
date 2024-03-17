@@ -30,6 +30,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('expense', ExpenseController::class)->middleware('auth');
+Route::resource('expense', ExpenseController::class)->middleware('auth')->middleware('verified');
 
-Route::resource('user', UserController::class)->middleware('admin');
+Route::resource('user', UserController::class)->middleware('admin')->middleware('verified');
